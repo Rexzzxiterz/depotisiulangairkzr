@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Orbitron', sans-serif;
+  background: radial-gradient(#000000, #0a0a0a);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.dashboard {
+  text-align: center;
+  padding: 40px;
+  border: 2px solid red;
+  background-color: #111;
+  border-radius: 12px;
+  box-shadow: 0 0 20px red;
+  width: 300px;
+}
+
+.dashboard h1 {
+  font-size: 28px;
+  color: red;
+  margin-bottom: 25px;
+  text-shadow: 0 0 10px red;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  background: #222;
+  border: 2px solid red;
+  border-radius: 5px;
+  color: white;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 10px;
+  background-color: red;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-box button:hover {
+  background-color: darkred;
+}
