@@ -1,56 +1,57 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
 
 body {
   margin: 0;
   padding: 0;
   font-family: 'Orbitron', sans-serif;
-  background: radial-gradient(#000000, #0a0a0a);
+  background: linear-gradient(135deg, #000000, #1a1a1a);
   color: #fff;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   height: 100vh;
-  overflow: hidden;
 }
 
-.dashboard {
-  text-align: center;
-  padding: 40px;
+.mod-menu {
+  background: #111;
+  padding: 30px;
   border: 2px solid red;
-  background-color: #111;
   border-radius: 12px;
   box-shadow: 0 0 20px red;
-  width: 300px;
+  width: 350px;
+  text-align: center;
 }
 
-.dashboard h1 {
-  font-size: 28px;
+.mod-menu h1 {
   color: red;
-  margin-bottom: 25px;
+  font-size: 20px;
+  margin-bottom: 20px;
   text-shadow: 0 0 10px red;
 }
 
-.login-box input {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  background: #222;
-  border: 2px solid red;
-  border-radius: 5px;
-  color: white;
+.toggle {
+  margin: 15px 0;
 }
 
-.login-box button {
-  width: 100%;
-  padding: 10px;
-  background-color: red;
-  border: none;
+.toggle input[type="checkbox"] {
+  transform: scale(1.5);
+  margin-right: 10px;
+}
+
+.toggle label {
+  font-size: 16px;
+}
+
+.toggle button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background: red;
   color: white;
-  font-weight: bold;
-  border-radius: 5px;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
 }
 
-.login-box button:hover {
-  background-color: darkred;
+.toggle button:hover {
+  background: darkred;
 }
