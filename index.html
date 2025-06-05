@@ -2,17 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Rexzz Xiterz Dashboard</title>
+  <title>Rexzz Xiterz - Mod Menu</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="dashboard">
-    <h1>Rexzz Xiterz</h1>
-    <div class="login-box">
-      <input type="text" placeholder="Username" />
-      <input type="password" placeholder="Password" />
-      <button>Login</button>
+  <div class="mod-menu">
+    <h1>🛠 Rexzz Xiterz - Mod Menu</h1>
+    
+    <div class="toggle">
+      <label><input type="checkbox" id="aimbot-body" /> Aimbot Body</label>
+    </div>
+    
+    <div class="toggle">
+      <label><input type="checkbox" id="aimbot-head" /> Aimbot Head</label>
+    </div>
+    
+    <div class="toggle">
+      <label><input type="checkbox" id="hologram" /> Hologram</label>
+    </div>
+    
+    <div class="toggle">
+      <button id="teleport">Teleport 🔁</button>
     </div>
   </div>
+
+  <script>
+    document.getElementById('teleport').addEventListener('click', () => {
+      alert("Teleport activated! (Simulasi)");
+    });
+  </script>
 </body>
 </html>
