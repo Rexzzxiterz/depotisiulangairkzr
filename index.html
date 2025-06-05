@@ -441,7 +441,7 @@
       return;
     }
 
-    const text = `Halo, nama saya *${name}*. Saya ingin menyampaikan pesan: *${message}*.
+    const text = `Halo, nama saya *${name}*. Saya ingin menyampaikan pesan: ${message}`;
     const encodedText = encodeURIComponent(text);
     const whatsappURL = `https://wa.me/${ownerWhatsAppNumber}?text=${encodedText}`;
 
