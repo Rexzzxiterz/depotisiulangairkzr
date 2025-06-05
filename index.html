@@ -35,6 +35,21 @@
       background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3dpc3MlMjBtb3VudGFpbnxlbnwwfHwwfHx8MTY4ODMxMTc5OA&ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
       background-size: cover;
       background-color: var(--background-color);
+      overflow-x: hidden;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    /* Snow canvas positioned behind content */
+    #snow-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 0;
+      width: 100vw;
+      height: 100vh;
+      display: block;
     }
 
     header {
@@ -46,6 +61,7 @@
       overflow: hidden;
       clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
       box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+      z-index: 1;
     }
 
     /* Animated subtle waves behind header */
@@ -86,7 +102,7 @@
       position: relative;
       z-index: 1;
     }
-    header p {
+    header h3 {
       font-size: 1.25rem;
       font-weight: 300;
       max-width: 460px;
@@ -236,20 +252,6 @@
       z-index: 1;
     }
 
-    .owner-phone {
-      font-weight: 700;
-      font-size: 1.2rem;
-      color: var(--primary-dark);
-      background: #e0f7fa;
-      border-radius: var(--border-radius);
-      padding: 0.85rem 1rem;
-      margin-bottom: 1.2rem;
-      text-align: center;
-      box-shadow: inset 0 3px 6px rgba(2, 119, 189, 0.15);
-      user-select: all;
-      cursor: text;
-    }
-
     label {
       font-weight: 600;
       margin-bottom: 0.35rem;
@@ -349,7 +351,7 @@
         font-size: 2.25rem;
       }
 
-      header p {
+      header h3 {
         font-size: 1rem;
       }
 
@@ -362,6 +364,7 @@
   </style>
 </head>
 <body>
+  <canvas id="snow-canvas"></canvas>
   <header>
     <h1>Depot Isi Ulang Air KZR</h1>
     <h3>Solusi Air Bersih dan Sehat untuk Keluarga dan Bisnis Anda</h3>
@@ -447,6 +450,80 @@
 
     window.open(whatsappURL, '_blank');
   });
+
+  // Snow particle effect
+  const canvas = document.getElementById('snow-canvas');
+  const ctx = canvas.getContext('2d');
+  let width, height;
+  let snowflakes = [];
+
+  function initCanvas() {
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width;
+    canvas.height = height;
+  }
+
+  function random(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  class Snowflake {
+    constructor() {
+      this.x = random(0, width);
+      this.y = random(-height, 0);
+      this.radius = random(1, 4);
+      this.speedY = random(0.5, 1.5);
+      this.speedX = random(-0.5, 0.5);
+      this.opacity = random(0.3, 0.8);
+    }
+
+    update() {
+      this.y += this.speedY;
+      this.x += this.speedX;
+      if (this.y > height) {
+        this.y = random(-20, 0);
+        this.x = random(0, width);
+      }
+      if (this.x > width) {
+        this.x = 0;
+      } else if (this.x < 0) {
+        this.x = width;
+      }
+    }
+
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+      ctx.fill();
+    }
+  }
+
+  function createSnowflakes(count = 100) {
+    snowflakes = [];
+    for (let i = 0; i < count; i++) {
+      snowflakes.push(new Snowflake());
+    }
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+    snowflakes.forEach(snowflake => {
+      snowflake.update();
+      snowflake.draw();
+    });
+    requestAnimationFrame(animate);
+  }
+
+  window.addEventListener('resize', () => {
+    initCanvas();
+    createSnowflakes();
+  });
+
+  initCanvas();
+  createSnowflakes();
+  animate();
 </script>
 </body>
 </html>
